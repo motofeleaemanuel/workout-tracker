@@ -41,8 +41,8 @@ export const createWorkoutSlice = createSlice({
         exercise.sets.push({
           id: setId,
           number: maxSetNumber + 1,
-          weight: Number(setWeight),
-          reps: Number(setRepetitions),
+          weight: setWeight,
+          reps: setRepetitions,
         });
       }
     },
