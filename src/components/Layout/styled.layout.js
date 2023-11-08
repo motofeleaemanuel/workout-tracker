@@ -12,5 +12,5 @@ export const LayoutNoWidth = styled.div`
 `;
 
 export const LayoutChildrenWrapper = styled.div`
-  padding-top: ${SIZES.large};
+  padding: ${SIZES.large} ${SIZES.small} 0px ${SIZES.small};
 `;

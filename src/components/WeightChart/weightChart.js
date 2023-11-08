@@ -31,7 +31,7 @@ export default function WeightChart({ bodyWeights }) {
               data: weights,
             },
           ]}
-          width={location.pathname === "/dashboard" ? 580 : 1200}
+          locationName={location.pathname}
           height={300}
         />
       </div>
