@@ -15,6 +15,7 @@ import WorkoutSummary from "../../components/WorkoutSummary/workoutSummary";
 import { useAuth0 } from "@auth0/auth0-react";
 import axios from "axios";
 import WorkoutCreated from "../../components/WorkoutCreated/workoutCreated";
+import { baseURL } from "../../utils/baseUrl";
 
 const CreateWorkout = () => {
   const { getAccessTokenSilently } = useAuth0();
@@ -36,7 +37,7 @@ const CreateWorkout = () => {
     getAccessTokenSilently().then((accessToken) => {
       axios
         .post(
-          "https://workout-tracker-be.onrender.com/api/workout/createWorkout",
+          `${baseURL}/api/workout/createWorkout`,
           {
             workout: workout?.workout,
             userId: user?.user?._id,
@@ -111,13 +112,10 @@ const CreateWorkout = () => {
     const fetchAllCategories = () => {
       getAccessTokenSilently().then((accessToken) => {
         axios
-          .get(
-            `https://workout-tracker-be.onrender.com/api/category/getAllCategories`,
-            {
-              signal: abortController.signal,
-              headers: { Authorization: `Bearer ${accessToken}` },
-            }
-          )
+          .get(`${baseURL}/api/category/getAllCategories`, {
+            signal: abortController.signal,
+            headers: { Authorization: `Bearer ${accessToken}` },
+          })
           .then((response) => {
             if (response.status === 200) {
               setCategories(response.data);

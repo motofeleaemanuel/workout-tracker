@@ -9,6 +9,7 @@ import { Card, Grid, Typography } from "@mui/material";
 import { addBodyWeightsToState } from "../../redux/allBodyWeightsSlice";
 import WeightChart from "../../components/WeightChart/weightChart";
 import SnackBar from "../../components/SnackBar/snackBar";
+import { baseURL } from "../../utils/baseUrl";
 
 const Dashboard = () => {
   const userId = useSelector((state) => state?.auth?.user?.user?._id);
@@ -33,13 +34,10 @@ const Dashboard = () => {
     const fetchAllWorkouts = () => {
       getAccessTokenSilently().then((accessToken) => {
         axios
-          .get(
-            `https://workout-tracker-be.onrender.com/api/workout/getAllWorkouts?userId=${userId}`,
-            {
-              signal: abortController.signal,
-              headers: { Authorization: `Bearer ${accessToken}` },
-            }
-          )
+          .get(`${baseURL}/api/workout/getAllWorkouts?userId=${userId}`, {
+            signal: abortController.signal,
+            headers: { Authorization: `Bearer ${accessToken}` },
+          })
           .then((response) => {
             if (response.status === 200) {
               dispatch(addWorkoutsToState(response.data));
@@ -74,7 +72,7 @@ const Dashboard = () => {
       try {
         const accessToken = await getAccessTokenSilently();
         const response = await axios.get(
-          `https://workout-tracker-be.onrender.com/api/bodyWeightTracker/getAllBodyWeight/${userId}`,
+          `${baseURL}/api/bodyWeightTracker/getAllBodyWeight/${userId}`,
           {
             signal: abortController.signal,
             headers: { Authorization: `Bearer ${accessToken}` },

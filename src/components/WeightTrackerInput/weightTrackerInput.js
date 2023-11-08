@@ -5,6 +5,7 @@ import { useAuth0 } from "@auth0/auth0-react";
 import axios from "axios";
 import { useDispatch, useSelector } from "react-redux";
 import { addNewBodyWeightToState } from "../../redux/allBodyWeightsSlice";
+import { baseURL } from "../../utils/baseUrl";
 
 const WeightTrackerInput = () => {
   const [bodyWeight, setBodyWeight] = useState(0);
@@ -16,7 +17,7 @@ const WeightTrackerInput = () => {
     getAccessTokenSilently().then((accessToken) => {
       axios
         .post(
-          "https://workout-tracker-be.onrender.com/api/bodyWeightTracker/addBodyWeight",
+          `${baseURL}/api/bodyWeightTracker/addBodyWeight`,
           {
             bodyWeight,
             userId: user?.user?._id,

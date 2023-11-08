@@ -11,6 +11,7 @@ import {
 } from "../../redux/allBodyWeightsSlice";
 import WeightChart from "../../components/WeightChart/weightChart";
 import SnackBar from "../../components/SnackBar/snackBar";
+import { baseURL } from "../../utils/baseUrl";
 
 const WeightTracker = () => {
   const { getAccessTokenSilently } = useAuth0();
@@ -23,7 +24,7 @@ const WeightTracker = () => {
     try {
       const accessToken = await getAccessTokenSilently();
       await axios.delete(
-        `https://workout-tracker-be.onrender.com/api/bodyWeightTracker/deleteBodyWeight/${id}`,
+        `${baseURL}/api/bodyWeightTracker/deleteBodyWeight/${id}`,
         {
           headers: { Authorization: `Bearer ${accessToken}` },
         }
@@ -42,7 +43,7 @@ const WeightTracker = () => {
       try {
         const accessToken = await getAccessTokenSilently();
         const response = await axios.get(
-          `https://workout-tracker-be.onrender.com/api/bodyWeightTracker/getAllBodyWeight/${userId}`,
+          `${baseURL}/api/bodyWeightTracker/getAllBodyWeight/${userId}`,
           {
             signal: abortController.signal,
             headers: { Authorization: `Bearer ${accessToken}` },

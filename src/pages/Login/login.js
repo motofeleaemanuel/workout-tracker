@@ -1,5 +1,6 @@
 import React from "react";
 import {
+  FeatureText,
   ForgotPasswordText,
   LoginCard,
   LoginCardLeftSide,
@@ -101,7 +102,7 @@ const Login = () => {
             </LoginFormInputs>
           </LoginFormWrapper>
 
-          <Typography
+          <FeatureText
             style={{
               position: "absolute",
               bottom: 0,
@@ -111,7 +112,7 @@ const Login = () => {
             }}
           >
             Register coming soon...
-          </Typography>
+          </FeatureText>
         </LoginCardLeftSide>
         <LoginCardRightSide>
           <ResizedCarousel>

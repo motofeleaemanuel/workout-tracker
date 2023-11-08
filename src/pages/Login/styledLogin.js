@@ -1,6 +1,6 @@
 import styled from "styled-components";
 import { Typography } from "@mui/material";
-import theme from "../../theme/theme";
+import theme, { BREAKPOINTS } from "../../theme/theme";
 import Carousel from "react-material-ui-carousel";
 
 export const LoginContainer = styled.div`
@@ -19,6 +19,10 @@ export const LoginCard = styled.div`
   border-radius: 24px;
   display: flex;
   box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+  @media (max-width: ${BREAKPOINTS.large}) {
+    height: 100%;
+    border-radius: 0px;
+  }
 `;
 
 export const LoginCardLeftSide = styled.div`
@@ -28,6 +32,9 @@ export const LoginCardLeftSide = styled.div`
   display: flex;
   align-items: center;
   justify-content: center;
+  @media (max-width: ${BREAKPOINTS.large}) {
+    width: 100%;
+  }
 `;
 
 export const LoginCardRightSide = styled.div`
@@ -35,6 +42,9 @@ export const LoginCardRightSide = styled.div`
   height: 100%;
   border-top-right-radius: 24px;
   border-bottom-right-radius: 24px;
+  @media (max-width: ${BREAKPOINTS.large}) {
+    display: none;
+  }
 `;
 
 export const LoginFormWrapper = styled.div`
@@ -76,4 +86,15 @@ export const ForgotPasswordText = styled(Typography)`
   color: black;
   }
 }
+`;
+
+export const FeatureText = styled(Typography)`
+  position: absolute;
+  bottom: 0;
+  left: 185px;
+  font-size: 12px;
+  color: ${theme.palette.disabled.main};
+  @media (max-width: ${BREAKPOINTS.large}) {
+    display: none;
+  }
 `;

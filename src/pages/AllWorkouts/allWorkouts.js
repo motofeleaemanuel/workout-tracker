@@ -11,6 +11,7 @@ import {
   clearWorkouts,
 } from "../../redux/allWorkoutsSlice";
 import SnackBar from "../../components/SnackBar/snackBar";
+import { baseURL } from "../../utils/baseUrl";
 
 const AllWorkouts = () => {
   const userId = useSelector((state) => state?.auth?.user?.user?._id);
@@ -29,7 +30,7 @@ const AllWorkouts = () => {
       const encodedSearchQuery = encodeURIComponent(searchQuery);
       axios
         .get(
-          `https://workout-tracker-be.onrender.com/api/workout/getAllWorkouts?userId=${userId}&category=${encodedCategory}&searchQuery=${encodedSearchQuery}`,
+          `${baseURL}/api/workout/getAllWorkouts?userId=${userId}&category=${encodedCategory}&searchQuery=${encodedSearchQuery}`,
           {
             headers: { Authorization: `Bearer ${accessToken}` },
           }
@@ -61,13 +62,10 @@ const AllWorkouts = () => {
     const fetchAllWorkouts = () => {
       getAccessTokenSilently().then((accessToken) => {
         axios
-          .get(
-            `https://workout-tracker-be.onrender.com/api/workout/getAllWorkouts?userId=${userId}`,
-            {
-              signal: abortController.signal,
-              headers: { Authorization: `Bearer ${accessToken}` },
-            }
-          )
+          .get(`${baseURL}/api/workout/getAllWorkouts?userId=${userId}`, {
+            signal: abortController.signal,
+            headers: { Authorization: `Bearer ${accessToken}` },
+          })
           .then((response) => {
             if (response.status === 200) {
               setIsLoading(false);

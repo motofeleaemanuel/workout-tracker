@@ -7,6 +7,7 @@ import SetsTable from "../../components/SetsTable/setsTable";
 import Layout from "../../components/Layout/layout";
 import { convertDate } from "../../utils/convertDate";
 import theme from "../../theme/theme";
+import { baseURL } from "../../utils/baseUrl";
 
 const Workout = () => {
   const params = useParams();
@@ -19,13 +20,10 @@ const Workout = () => {
       getAccessTokenSilently()
         .then((accessToken) => {
           axios
-            .get(
-              `https://workout-tracker-be.onrender.com/api/workout/getWorkout/${params.id}`,
-              {
-                signal: abortController.signal,
-                headers: { Authorization: `Bearer ${accessToken}` },
-              }
-            )
+            .get(`${baseURL}/api/workout/getWorkout/${params.id}`, {
+              signal: abortController.signal,
+              headers: { Authorization: `Bearer ${accessToken}` },
+            })
             .then((response) => {
               setWorkoutData(response.data);
             })

@@ -4,6 +4,7 @@ import { useLocation, useNavigate } from "react-router-dom";
 import axios from "axios";
 import { useDispatch } from "react-redux";
 import { signIn } from "../../redux/authSlice";
+import { baseURL } from "../../utils/baseUrl";
 
 const WithAuthentication = ({ children }) => {
   const dispatch = useDispatch();
@@ -18,13 +19,10 @@ const WithAuthentication = ({ children }) => {
       const fetchData = async () => {
         try {
           const accessToken = await getAccessTokenSilently();
-          const response = await axios.get(
-            "https://workout-tracker-be.onrender.com/api/user/check",
-            {
-              signal: abortController.signal,
-              headers: { Authorization: `Bearer ${accessToken}` },
-            }
-          );
+          const response = await axios.get(`${baseURL}/api/user/check`, {
+            signal: abortController.signal,
+            headers: { Authorization: `Bearer ${accessToken}` },
+          });
           const { data } = response;
           dispatch(signIn(data));
         } catch (error) {

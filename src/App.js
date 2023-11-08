@@ -13,6 +13,7 @@ import { signIn } from "./redux/authSlice";
 import CreateWorkout from "./pages/CreateWorkout/createWorkout";
 import WithAuthentication from "./components/WithAuth/withAuth";
 import Workout from "./pages/Workout/workout";
+import { baseURL } from "./utils/baseUrl";
 
 function App() {
   const { isLoading, user, isAuthenticated, getAccessTokenSilently } =
@@ -29,7 +30,7 @@ function App() {
         .then((accessToken) => {
           axios
             .post(
-              "https://workout-tracker-be.onrender.com/api/user/createUser",
+              `${baseURL}/api/user/createUser`,
               {
                 given_name,
                 family_name,
