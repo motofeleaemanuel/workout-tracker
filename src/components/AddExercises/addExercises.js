@@ -118,7 +118,7 @@ const AddExercise = () => {
                     />
                     <Button
                       variant="outlined"
-                      style={{ width: "250px" }}
+                      style={{ whiteSpace: "nowrap" }}
                       onClick={() => {
                         handleAddSet(exercise.id);
                       }}

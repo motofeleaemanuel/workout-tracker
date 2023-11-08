@@ -8,7 +8,6 @@ export const TitleWrapper = styled.div`
 
 export const AddExerciseFieldWrapper = styled.div`
   display: flex;
-  align-items: center;
   margin-bottom: ${SIZES.large};
 `;
 

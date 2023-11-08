@@ -8,6 +8,7 @@ export const StepperWrapper = styled.div`
 `;
 
 export const CustomInputField = styled(TextField)`
+  flex: 1;
   input:-webkit-autofill {
     -webkit-box-shadow: 0 0 0 1000px #f5f5f5 inset;
   }

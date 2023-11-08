@@ -14,7 +14,7 @@ export default function WorkoutCategoryDropdown({
     setSelectedCategory({ name: event.target.value });
   };
   return (
-    <Box sx={{ minWidth: 200 }}>
+    <Box sx={{ minWidth: 120 }}>
       <FormControl fullWidth>
         <InputLabel id="demo-simple-select-label">Catagory</InputLabel>
         <Select
