@@ -1,13 +1,13 @@
-import React from "react";
+import React, { useState } from "react";
 import {
   NavbarContainer,
+  NavbarLinksText,
   NavbarLinksWrapper,
   NavbarLogoImage,
   NavbarLogoWrapper,
   NavbarWrapper,
 } from "./styled.navbar";
 import logo from "../../assets/logoImg.png";
-import { Typography } from "@mui/material";
 import NavbarAvatar from "../NavbarAvatar/navbarAvatar";
 import { useLocation, useNavigate } from "react-router-dom";
 import { linkMaker } from "../../utils/linkMaker";
@@ -20,38 +20,42 @@ const links = [
 ];
 
 const Navbar = () => {
+  const [isNavbarOpen, setIsNavbarOpen] = useState(false);
   const navigate = useNavigate();
   const location = useLocation();
   const isActiveLink = (pathname, link) => {
     return pathname === `/${linkMaker(link)}`;
   };
+
+  const handleOnChangeRoute = (link) => {
+    navigate(`/${linkMaker(link)}`);
+    setIsNavbarOpen(false);
+  };
+
   return (
     <NavbarContainer>
       <NavbarWrapper>
         <NavbarLogoWrapper>
           <NavbarLogoImage src={logo} alt="logos" />
         </NavbarLogoWrapper>
-        <NavbarLinksWrapper>
+        <NavbarLinksWrapper isNavbarOpen={isNavbarOpen}>
           {links.map((link, index) => {
             const isActive = isActiveLink(location.pathname, link.name);
             return (
-              <Typography
-                style={{
-                  color: "white",
-                  fontWeight: 500,
-                  fontSize: "16px",
-                  borderBottom: isActive ? "2px solid white" : "none",
-                  cursor: "pointer",
-                }}
+              <NavbarLinksText
                 key={link + index}
-                onClick={() => navigate(`/${linkMaker(link.name)}`)}
+                isActive={isActive}
+                onClick={() => handleOnChangeRoute(link.name)}
               >
                 {link.name}
-              </Typography>
+              </NavbarLinksText>
             );
           })}
         </NavbarLinksWrapper>
-        <NavbarAvatar />
+        <NavbarAvatar
+          setIsNavbarOpen={setIsNavbarOpen}
+          isNavbarOpen={isNavbarOpen}
+        />
       </NavbarWrapper>
     </NavbarContainer>
   );

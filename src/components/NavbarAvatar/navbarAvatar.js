@@ -8,8 +8,9 @@ import { Divider, Typography } from "@mui/material";
 import LightModeIcon from "@mui/icons-material/LightMode";
 import LogoutIcon from "@mui/icons-material/Logout";
 import theme from "../../theme/theme";
+import { BurgerMenu, BurgerMenuWrapper } from "./styled.navbarAvatar";
 
-function NavbarAvatar() {
+function NavbarAvatar({ setIsNavbarOpen, isNavbarOpen }) {
   const { user, logout } = useAuth0();
   const [isPopoverOpen, setIsPopoverOpen] = useState(false);
   const [anchorEl, setAnchorEl] = useState(null);
@@ -25,8 +26,16 @@ function NavbarAvatar() {
 
   return (
     <NavbarIconWrapper>
+      <BurgerMenuWrapper>
+        <Button
+          onClick={() => {
+            setIsNavbarOpen(!isNavbarOpen);
+          }}
+        >
+          <BurgerMenu fontSize="large" />
+        </Button>
+      </BurgerMenuWrapper>
       <Avatar alt="Remy Sharp" src={user.picture} onClick={handleAvatarClick} />
-
       <Popover
         open={isPopoverOpen}
         anchorEl={anchorEl}
