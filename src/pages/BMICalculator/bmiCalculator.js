@@ -4,7 +4,7 @@ import { CustomInputField } from "../../components/WorkoutName/styled.workoutNam
 import GenderRadioButtons from "../../components/GenderRadioButtons/genderRadioButtons";
 import BMITable from "../../components/BMITable/bmiTable";
 import { Button, Typography } from "@mui/material";
-import theme from "../../theme/theme";
+import theme, { SIZES } from "../../theme/theme";
 import {
   ButtonsWrapper,
   HeaderTextWrapper,
@@ -132,7 +132,9 @@ const BMICalculator = () => {
           <span style={{ color: theme.palette.secondary.main }}>{bmi}</span>
         </Typography>
       </ResultWrapper>
-      <BMITable />
+      <div style={{ paddingBottom: SIZES.large }}>
+        <BMITable />
+      </div>
     </Layout>
   );
 };

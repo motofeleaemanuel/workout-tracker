@@ -49,7 +49,7 @@ const rows = [
 
 export default function BMITable() {
   return (
-    <TableContainer component={Paper} style={{ marginBottom: SIZES.large }}>
+    <TableContainer component={Paper}>
       <Table sx={{ minWidth: 330 }} aria-label="customized table">
         <TableHead>
           <TableRow>
