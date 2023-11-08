@@ -36,7 +36,7 @@ export default function BestSetTable({ workoutExercises }) {
   };
   return (
     <TableContainer component={Paper} style={{ marginBottom: "24px" }}>
-      <Table sx={{ minWidth: 350 }} aria-label="simple table">
+      <Table sx={{ minWidth: 300 }} aria-label="simple table">
         <TableHead
           style={{
             backgroundColor: theme.palette.primary.main,

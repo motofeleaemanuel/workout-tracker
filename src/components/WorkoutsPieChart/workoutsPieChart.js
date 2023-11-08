@@ -1,5 +1,6 @@
 import * as React from "react";
 import { PieChart } from "@mui/x-charts/PieChart";
+import { CustomPieChart } from "./styled.workoutsPieChart";
 
 export default function WorkoutsPieChart({ workouts }) {
   const workoutCounts = workouts?.reduce((acc, workout) => {
@@ -22,7 +23,7 @@ export default function WorkoutsPieChart({ workouts }) {
 
   return (
     workouts && (
-      <PieChart
+      <CustomPieChart
         series={[
           {
             data: pieChartData,
@@ -32,12 +33,11 @@ export default function WorkoutsPieChart({ workouts }) {
             cornerRadius: 5,
             startAngle: -180,
             endAngle: 180,
-            cx: 150,
+            cx: 120,
             cy: 150,
           },
         ]}
         height={300}
-        width={450}
       />
     )
   );

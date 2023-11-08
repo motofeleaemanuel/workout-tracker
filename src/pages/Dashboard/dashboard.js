@@ -5,13 +5,15 @@ import { useAuth0 } from "@auth0/auth0-react";
 import WorkoutsPieChart from "../../components/WorkoutsPieChart/workoutsPieChart";
 import axios from "axios";
 import { addWorkoutsToState } from "../../redux/allWorkoutsSlice";
-import { Card, Grid, Typography } from "@mui/material";
+import { Card, Grid, Typography, useMediaQuery } from "@mui/material";
 import { addBodyWeightsToState } from "../../redux/allBodyWeightsSlice";
 import WeightChart from "../../components/WeightChart/weightChart";
 import SnackBar from "../../components/SnackBar/snackBar";
 import { baseURL } from "../../utils/baseUrl";
+import { BREAKPOINTS } from "../../theme/theme";
 
 const Dashboard = () => {
+  const isSmallScreen = useMediaQuery(`(max-width:${BREAKPOINTS.medium})`);
   const userId = useSelector((state) => state?.auth?.user?.user?._id);
   const workouts = useSelector((state) => state?.workouts?.workouts);
   const bodyWeights = useSelector((state) => state?.bodyWeights?.bodyWeights);
@@ -108,7 +110,7 @@ const Dashboard = () => {
         <SnackBar severity={"error"} error={error} />
       )}
       <Grid container spacing={2}>
-        <Grid item xs={6}>
+        <Grid item xs={isSmallScreen ? 12 : 6}>
           <Card sx={{ padding: "24px", height: "320px" }}>
             {workouts ? (
               <>
@@ -122,7 +124,7 @@ const Dashboard = () => {
             )}
           </Card>
         </Grid>
-        <Grid item xs={6}>
+        <Grid item xs={isSmallScreen ? 12 : 6}>
           <Card sx={{ padding: "24px", height: "320px" }}>
             {bodyWeights && <WeightChart bodyWeights={bodyWeights} />}
           </Card>
