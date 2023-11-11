@@ -12,7 +12,7 @@ const GoogleLoginButton = () => {
   const { loginWithRedirect } = useAuth0();
 
   const handleOnClick = async () => {
-    loginWithRedirect({ redirect_uri: "https://localhost:3000/allWorkouts" });
+    loginWithRedirect();
   };
 
   return (

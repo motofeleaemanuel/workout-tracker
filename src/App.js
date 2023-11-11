@@ -14,6 +14,7 @@ import CreateWorkout from "./pages/CreateWorkout/createWorkout";
 import WithAuthentication from "./components/WithAuth/withAuth";
 import Workout from "./pages/Workout/workout";
 import { baseURL } from "./utils/baseUrl";
+import LoadingPage from "./pages/LoadingPage/loadingPage";
 
 function App() {
   const { isLoading, user, isAuthenticated, getAccessTokenSilently } =
@@ -21,10 +22,8 @@ function App() {
   const dispatch = useDispatch();
   const [isCreatingUser, setIsCreatingUser] = useState(true);
 
-  const userCreated = localStorage.getItem("userCreated");
-
   useEffect(() => {
-    if (isAuthenticated && !userCreated) {
+    if (isAuthenticated) {
       const { given_name, family_name, email, picture } = user;
       getAccessTokenSilently()
         .then((accessToken) => {
@@ -42,7 +41,6 @@ function App() {
               }
             )
             .then((response) => {
-              localStorage.setItem("userCreated", "true");
               dispatch(signIn(response.data));
               setIsCreatingUser(false);
             })
@@ -56,7 +54,7 @@ function App() {
           setIsCreatingUser(false);
         });
     }
-  }, [isAuthenticated, userCreated]);
+  }, [isAuthenticated]);
 
   if (isLoading) {
     return null;
@@ -69,11 +67,12 @@ function App() {
         <Route
           path="/dashboard"
           element={
-            isAuthenticated &&
-            userCreated && (
+            isAuthenticated ? (
               <WithAuthentication>
                 <Dashboard />
               </WithAuthentication>
+            ) : (
+              <Navigate to="/" />
             )
           }
         />
@@ -81,9 +80,10 @@ function App() {
         <Route
           path="/"
           element={
-            isAuthenticated && isCreatingUser ? null : isAuthenticated &&
-              !isCreatingUser ? (
+            isAuthenticated && !isCreatingUser ? (
               <Navigate to="/dashboard" />
+            ) : isAuthenticated && isCreatingUser ? (
+              <LoadingPage />
             ) : (
               <Login />
             )

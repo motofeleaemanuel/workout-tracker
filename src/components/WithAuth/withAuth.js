@@ -11,11 +11,10 @@ const WithAuthentication = ({ children }) => {
   const { isAuthenticated, logout, getAccessTokenSilently } = useAuth0();
   const navigate = useNavigate();
   const location = useLocation();
-  const userCreated = localStorage.getItem("userCreated");
 
   useEffect(() => {
     const abortController = new AbortController();
-    if (isAuthenticated && userCreated) {
+    if (isAuthenticated) {
       const fetchData = async () => {
         try {
           const accessToken = await getAccessTokenSilently();
@@ -30,7 +29,6 @@ const WithAuthentication = ({ children }) => {
             return;
           }
           logout();
-          localStorage.removeItem("userCreated");
           navigate("/");
         }
       };
@@ -39,7 +37,6 @@ const WithAuthentication = ({ children }) => {
       return () => abortController.abort();
     } else {
       logout();
-      localStorage.removeItem("userCreated");
       navigate("/");
     }
   }, [location.pathname]);
