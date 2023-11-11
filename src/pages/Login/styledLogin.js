@@ -1,6 +1,6 @@
 import styled from "styled-components";
 import { Typography } from "@mui/material";
-import theme, { BREAKPOINTS } from "../../theme/theme";
+import { BREAKPOINTS } from "../../theme/theme";
 import Carousel from "react-material-ui-carousel";
 
 export const LoginContainer = styled.div`
@@ -79,7 +79,7 @@ export const ForgotPasswordText = styled(Typography)`
   display:inline;
   font-size: 12px !important;
   font-weight: bold !important;
-  color: ${theme.palette.primary.main};
+  color:${({ theme }) => theme.palette.primary.main};
   cursor: pointer;
   margin-bottom:12px !important;
   &:hover{
@@ -93,7 +93,7 @@ export const FeatureText = styled(Typography)`
   bottom: 0;
   left: 185px;
   font-size: 12px;
-  color: ${theme.palette.disabled.main};
+  color: ${({ theme }) => theme.palette.primary.main};
   @media (max-width: ${BREAKPOINTS.large}) {
     display: none;
   }

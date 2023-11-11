@@ -8,13 +8,14 @@ import TableHead from "@mui/material/TableHead";
 import TablePagination from "@mui/material/TablePagination";
 import TableRow from "@mui/material/TableRow";
 import { convertDate } from "../../utils/convertDate";
-import theme from "../../theme/theme";
 import RemoveCircleOutlineIcon from "@mui/icons-material/RemoveCircleOutline";
+import { useTheme } from "@mui/material";
 
 export default function WeightTrackerTable({
   bodyWeights,
   handleDeleteBodyWeight,
 }) {
+  const theme = useTheme();
   const [page, setPage] = React.useState(0);
   const [rowsPerPage, setRowsPerPage] = React.useState(5);
 

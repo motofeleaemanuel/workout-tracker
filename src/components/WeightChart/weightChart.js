@@ -1,10 +1,10 @@
 import { BarChart } from "@mui/x-charts";
 import { convertDateForChart } from "../../utils/convertDate";
-import { Typography } from "@mui/material";
-import theme from "../../theme/theme";
+import { Typography, useTheme } from "@mui/material";
 import { useLocation } from "react-router-dom";
 
 export default function WeightChart({ bodyWeights }) {
+  const theme = useTheme();
   const location = useLocation();
   if (!bodyWeights || bodyWeights.length === 0) {
     return <div>No data available</div>;

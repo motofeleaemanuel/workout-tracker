@@ -11,6 +11,7 @@ import logo from "../../assets/logoImg.png";
 import NavbarAvatar from "../NavbarAvatar/navbarAvatar";
 import { useLocation, useNavigate } from "react-router-dom";
 import { linkMaker } from "../../utils/linkMaker";
+import { useTheme } from "styled-components";
 
 const links = [
   { name: "Dashboard" },
@@ -20,6 +21,7 @@ const links = [
 ];
 
 const Navbar = () => {
+  const theme = useTheme();
   const [isNavbarOpen, setIsNavbarOpen] = useState(false);
   const navigate = useNavigate();
   const location = useLocation();
@@ -38,13 +40,14 @@ const Navbar = () => {
         <NavbarLogoWrapper>
           <NavbarLogoImage src={logo} alt="logos" />
         </NavbarLogoWrapper>
-        <NavbarLinksWrapper isNavbarOpen={isNavbarOpen}>
+        <NavbarLinksWrapper isnavbaropen={String(isNavbarOpen)}>
           {links.map((link, index) => {
             const isActive = isActiveLink(location.pathname, link.name);
             return (
               <NavbarLinksText
                 key={link + index}
-                isActive={isActive}
+                active={String(isActive)}
+                theme={theme}
                 onClick={() => handleOnChangeRoute(link.name)}
               >
                 {link.name}
@@ -53,8 +56,8 @@ const Navbar = () => {
           })}
         </NavbarLinksWrapper>
         <NavbarAvatar
-          setIsNavbarOpen={setIsNavbarOpen}
-          isNavbarOpen={isNavbarOpen}
+          setisnavbaropen={setIsNavbarOpen}
+          isnavbaropen={isNavbarOpen}
         />
       </NavbarWrapper>
     </NavbarContainer>

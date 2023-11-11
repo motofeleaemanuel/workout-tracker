@@ -31,13 +31,10 @@ const Dashboard = () => {
   useEffect(() => {
     if (!userId) return;
 
-    const abortController = new AbortController();
-
     const fetchAllWorkouts = () => {
       getAccessTokenSilently().then((accessToken) => {
         axios
           .get(`${baseURL}/api/workout/getAllWorkouts?userId=${userId}`, {
-            signal: abortController.signal,
             headers: { Authorization: `Bearer ${accessToken}` },
           })
           .then((response) => {
@@ -64,19 +61,17 @@ const Dashboard = () => {
       });
     };
     fetchAllWorkouts();
-    return () => abortController.abort();
   }, [userId]);
 
   useEffect(() => {
     if (!userId) return;
-    const abortController = new AbortController();
+
     const fetchData = async () => {
       try {
         const accessToken = await getAccessTokenSilently();
         const response = await axios.get(
           `${baseURL}/api/bodyWeightTracker/getAllBodyWeight/${userId}`,
           {
-            signal: abortController.signal,
             headers: { Authorization: `Bearer ${accessToken}` },
           }
         );
@@ -101,7 +96,6 @@ const Dashboard = () => {
     };
 
     if (userId) fetchData();
-    return () => abortController.abort();
   }, [userId]);
 
   return (

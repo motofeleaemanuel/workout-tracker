@@ -2,11 +2,10 @@ import React from "react";
 import ReactDOM from "react-dom/client";
 import App from "./App";
 import { Auth0Provider } from "@auth0/auth0-react";
-import { ThemeProvider } from "@mui/material/styles";
-import theme from "./theme/theme";
 import "./global.css";
 import { Provider } from "react-redux";
 import { store } from "./store";
+import { ThemeProvider } from "./theme/ThemeContextProvider";
 
 const domain = process.env.REACT_APP_AUTH0_DOMAIN;
 const clientId = process.env.REACT_APP_AUTH0_CLIENT_ID;
@@ -24,7 +23,7 @@ root.render(
           audience,
         }}
       >
-        <ThemeProvider theme={theme}>
+        <ThemeProvider>
           <App />
         </ThemeProvider>
       </Auth0Provider>

@@ -6,7 +6,7 @@ import Dashboard from "./pages/Dashboard/dashboard";
 import AllWorkouts from "./pages/AllWorkouts/allWorkouts";
 import WeightTracker from "./pages/WeightTracker/weightTracker";
 import BMICalculator from "./pages/BMICalculator/bmiCalculator";
-import { useEffect, useState } from "react";
+import React, { useEffect, useState } from "react";
 import axios from "axios";
 import { useDispatch } from "react-redux";
 import { signIn } from "./redux/authSlice";

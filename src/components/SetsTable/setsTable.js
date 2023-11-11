@@ -6,8 +6,8 @@ import TableContainer from "@mui/material/TableContainer";
 import TableHead from "@mui/material/TableHead";
 import TableRow from "@mui/material/TableRow";
 import Paper from "@mui/material/Paper";
-import theme from "../../theme/theme";
 import RemoveCircleOutlineIcon from "@mui/icons-material/RemoveCircleOutline";
+import { useTheme } from "@mui/material";
 
 export default function SetsTable({
   sets,
@@ -15,6 +15,7 @@ export default function SetsTable({
   exerciseId,
   readOnly,
 }) {
+  const theme = useTheme();
   return (
     <TableContainer component={Paper} style={{ marginBottom: "24px" }}>
       <Table sx={{ minWidth: 300 }} aria-label="simple table">

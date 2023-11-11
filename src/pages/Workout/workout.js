@@ -1,15 +1,15 @@
 import { useAuth0 } from "@auth0/auth0-react";
-import { Skeleton, Typography } from "@mui/material";
+import { Skeleton, Typography, useTheme } from "@mui/material";
 import axios from "axios";
 import React, { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import SetsTable from "../../components/SetsTable/setsTable";
 import Layout from "../../components/Layout/layout";
 import { convertDate } from "../../utils/convertDate";
-import theme from "../../theme/theme";
 import { baseURL } from "../../utils/baseUrl";
 
 const Workout = () => {
+  const theme = useTheme();
   const params = useParams();
   const { getAccessTokenSilently } = useAuth0();
   const [workoutData, setWorkoutData] = useState("");

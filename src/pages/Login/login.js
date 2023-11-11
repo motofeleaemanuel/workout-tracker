@@ -11,15 +11,20 @@ import {
   LoginFormWrapper,
   ResizedCarousel,
 } from "./styledLogin";
-import { Button, Divider, TextField, Typography } from "@mui/material";
+import {
+  Button,
+  Divider,
+  TextField,
+  Typography,
+  useTheme,
+} from "@mui/material";
 import logo from "../../assets/logoImg.png";
 import GoogleLoginButton from "../../components/GoogleLoginButton/GoogleLoginButton";
-import theme from "../../theme/theme";
 import image1 from "../../assets/DavidLaidBg.jpg";
 import image2 from "../../assets/TractiuniCarousel.jpg";
 import image3 from "../../assets/ChrisCarousel.jpg";
-
 const Login = () => {
+  const theme = useTheme();
   return (
     <LoginContainer>
       <LoginCard>
@@ -41,10 +46,7 @@ const Login = () => {
               style={{ marginBottom: "32px" }}
             >
               Empower Your Workouts <br />
-              <span style={{ color: theme.palette.primary.main }}>
-                {" "}
-                Gladiator Tracking
-              </span>
+              <span> Gladiator Tracking</span>
             </Typography>
             <LoginFormInputs>
               <TextField
@@ -103,6 +105,7 @@ const Login = () => {
           </LoginFormWrapper>
 
           <FeatureText
+            theme={theme}
             style={{
               position: "absolute",
               bottom: 0,

@@ -1,57 +1,57 @@
-import { createTheme } from "@mui/material/styles";
+// import { createTheme } from "@mui/material/styles";
 
-const theme = createTheme({
-  palette: {
-    primary: {
-      main: "#1d1c1a",
-    },
-    secondary: {
-      main: "#6365F1",
-    },
-    error: {
-      main: "#ed665c",
-    },
-    success: {
-      main: "#5ced88",
-    },
-    disabled: {
-      main: "#A6A6A6",
-    },
-  },
-  components: {
-    MuiButton: {
-      styleOverrides: {
-        root: {
-          textTransform: "none",
-        },
-      },
-    },
-    MuiInputBase: {
-      styleOverrides: {
-        input: {
-          fontSize: "14px",
-        },
-      },
-    },
-    MuiInputLabel: {
-      styleOverrides: {
-        root: {
-          fontSize: "14px",
-        },
-      },
-    },
-    MuiTablePagination: {
-      styleOverrides: {
-        toolbar: {
-          paddingLeft: "2px",
-        },
-      },
-    },
-  },
-  typography: {
-    fontFamily: "Poppins, sans-serif",
-  },
-});
+// const theme = createTheme({
+//   palette: {
+//     primary: {
+//       main: "#1d1c1a",
+//     },
+//     secondary: {
+//       main: "#6365F1",
+//     },
+//     error: {
+//       main: "#ed665c",
+//     },
+//     success: {
+//       main: "#5ced88",
+//     },
+//     disabled: {
+//       main: "#A6A6A6",
+//     },
+//   },
+//   components: {
+//     MuiButton: {
+//       styleOverrides: {
+//         root: {
+//           textTransform: "none",
+//         },
+//       },
+//     },
+//     MuiInputBase: {
+//       styleOverrides: {
+//         input: {
+//           fontSize: "14px",
+//         },
+//       },
+//     },
+//     MuiInputLabel: {
+//       styleOverrides: {
+//         root: {
+//           fontSize: "14px",
+//         },
+//       },
+//     },
+//     MuiTablePagination: {
+//       styleOverrides: {
+//         toolbar: {
+//           paddingLeft: "2px",
+//         },
+//       },
+//     },
+//   },
+//   typography: {
+//     fontFamily: "Poppins, sans-serif",
+//   },
+// });
 
 export const SIZES = {
   extraSmall: "8px",
@@ -69,4 +69,4 @@ export const BREAKPOINTS = {
   extraSmall: "320px",
 };
 
-export default theme;
+// export default theme;

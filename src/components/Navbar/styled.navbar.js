@@ -1,11 +1,11 @@
 import styled from "styled-components";
-import theme, { BREAKPOINTS } from "../../theme/theme";
+import { BREAKPOINTS } from "../../theme/theme";
 import { Typography } from "@mui/material";
 
 export const NavbarContainer = styled.div`
+  background-color: ${({ theme }) => theme.palette.primary.main};
   height: 65px;
   width: 100vw;
-  background-color: ${theme.palette.primary.main};
   position: relative;
 `;
 
@@ -47,7 +47,7 @@ export const NavbarLinksWrapper = styled.div`
     flex-direction: column;
     align-items: center;
     justify-content: flex-start;
-    left: ${(props) => (props.isNavbarOpen ? "0" : "-250%")};
+    left: ${(props) => (props.isnavbaropen === "true" ? "0" : "-250%")};
     top: 65px;
     background-color: white;
     width: 100vw;
@@ -62,20 +62,20 @@ export const NavbarLinksText = styled(Typography)`
   font-weight: 500;
   font-size: 16px;
   cursor: pointer;
-  ${(props) => props.isActive && "border-bottom: 2px solid white;"}
+  ${(props) => props.active === "true" && "border-bottom: 2px solid white;"}
   @media (max-width: ${BREAKPOINTS.medium}) {
+    color: ${({ theme }) => theme.palette.primary.main};
+    ${(props) =>
+      props.active === "true" &&
+      `background-color:  ${props.theme.palette.primary.main} !important; color: white !important;`};
     width: 100%;
     border-top: 1px solid white;
     border-bottom: none;
     padding: 10px 0px 10px 0px;
-    color: ${theme.palette.primary.main} !important;
     &:hover {
       color: white !important;
-      background-color: ${theme.palette.primary.main} !important;
+      background-color: ${({ theme }) => theme.palette.primary.main};
     }
-    ${(props) =>
-      props.isActive &&
-      `background-color: ${theme.palette.primary.main}; color:white !important`}
   }
 `;
 

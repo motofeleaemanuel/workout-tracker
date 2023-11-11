@@ -3,8 +3,8 @@ import Layout from "../../components/Layout/layout";
 import { CustomInputField } from "../../components/WorkoutName/styled.workoutName";
 import GenderRadioButtons from "../../components/GenderRadioButtons/genderRadioButtons";
 import BMITable from "../../components/BMITable/bmiTable";
-import { Button, Typography } from "@mui/material";
-import theme, { SIZES } from "../../theme/theme";
+import { Button, Typography, useTheme } from "@mui/material";
+import { SIZES } from "../../theme/theme";
 import {
   ButtonsWrapper,
   HeaderTextWrapper,
@@ -14,6 +14,7 @@ import {
 } from "./styled.bmiCalculator";
 
 const BMICalculator = () => {
+  const theme = useTheme();
   const [bmi, setBmi] = useState(0);
   const [formData, setFormData] = useState({
     age: 0,

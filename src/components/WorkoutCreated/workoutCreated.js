@@ -1,13 +1,13 @@
 import React from "react";
 import CheckCircleOutlineIcon from "@mui/icons-material/CheckCircleOutline";
 import ReportProblemIcon from "@mui/icons-material/ReportProblem";
-import { Button, Typography } from "@mui/material";
+import { Button, Typography, useTheme } from "@mui/material";
 import { useNavigate } from "react-router-dom";
-import theme from "../../theme/theme";
 import { useDispatch } from "react-redux";
 import { resetCreateWorkout } from "../../redux/createWorkoutSlice";
 
 const WorkoutCreated = ({ createdSuccessfully, setStep }) => {
+  const theme = useTheme();
   const dispatch = useDispatch();
   const navigate = useNavigate();
   return (

@@ -4,13 +4,13 @@ import Popover from "@mui/material/Popover";
 import Button from "@mui/material/Button";
 import { useAuth0 } from "@auth0/auth0-react";
 import { NavbarIconWrapper } from "../Navbar/styled.navbar";
-import { Divider, Typography } from "@mui/material";
-import LightModeIcon from "@mui/icons-material/LightMode";
+import { Divider, Typography, useTheme } from "@mui/material";
 import LogoutIcon from "@mui/icons-material/Logout";
-import theme from "../../theme/theme";
 import { BurgerMenu, BurgerMenuWrapper } from "./styled.navbarAvatar";
+import ThemeButton from "../ThemeButton/themeButton";
 
-function NavbarAvatar({ setIsNavbarOpen, isNavbarOpen }) {
+function NavbarAvatar({ setisnavbaropen, isnavbaropen }) {
+  const theme = useTheme();
   const { user, logout } = useAuth0();
   const [isPopoverOpen, setIsPopoverOpen] = useState(false);
   const [anchorEl, setAnchorEl] = useState(null);
@@ -29,7 +29,7 @@ function NavbarAvatar({ setIsNavbarOpen, isNavbarOpen }) {
       <BurgerMenuWrapper>
         <Button
           onClick={() => {
-            setIsNavbarOpen(!isNavbarOpen);
+            setisnavbaropen(!isnavbaropen);
           }}
         >
           <BurgerMenu fontSize="large" />
@@ -73,11 +73,17 @@ function NavbarAvatar({ setIsNavbarOpen, isNavbarOpen }) {
         <div style={{ padding: "0px 12px 0px 12px" }}>
           <Divider />
         </div>
-        <div style={{ display: "flex", padding: "12px" }}>
+        <div
+          style={{
+            display: "flex",
+            padding: "8px 12px 8px 12px",
+            alignItems: "center",
+          }}
+        >
           <Typography style={{ marginRight: "8px", fontSize: "14px" }}>
             Change Theme
           </Typography>
-          <LightModeIcon />
+          <ThemeButton />
         </div>
         <div style={{ padding: "0px 12px 0px 12px" }}>
           <Divider />
